@@ -1,177 +1,522 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>No Names Esports</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <title>NONAMES | E-SPORT</title>
 
-<style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Orbitron', sans-serif;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-body{
-background:#050505;
-color:white;
-overflow-x:hidden;
-}
+  <style>
 
-header{
-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
-url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070');
-background-size:cover;
-background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-.hero h1{
-font-size:6rem;
-color:#00ffcc;
-text-shadow:0 0 20px #00ffcc;
-}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+    }
 
-.hero p{
-margin-top:20px;
-font-size:1.5rem;
-color:#ccc;
-}
+    body::before{
+      content:"";
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle at top left, rgba(255,0,90,0.18), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(0,183,255,0.18), transparent 30%);
+      z-index:-2;
+    }
 
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:15px 40px;
-background:#00ffcc;
-color:black;
-font-weight:bold;
-text-decoration:none;
-border-radius:10px;
-transition:0.3s;
-}
+    .grid{
+      position:fixed;
+      width:100%;
+      height:100%;
+      background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:-1;
+      animation:gridMove 12s linear infinite;
+    }
 
-.btn:hover{
-transform:scale(1.1);
-box-shadow:0 0 25px #00ffcc;
-}
+    @keyframes gridMove{
+      from{
+        transform:translateY(0px);
+      }
+      to{
+        transform:translateY(40px);
+      }
+    }
 
-section{
-padding:100px 10%;
-}
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
 
-.section-title{
-font-size:3rem;
-margin-bottom:50px;
-color:#00ffcc;
-}
+    nav{
+      max-width:1300px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px;
+    }
 
-.players{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
+    .logo{
+      font-size:2rem;
+      font-family:'Orbitron',sans-serif;
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      background:linear-gradient(90deg,#00b7ff,#ff0055);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-.card{
-background:#111;
-padding:30px;
-border-radius:20px;
-transition:0.3s;
-border:1px solid #222;
-}
+    .menu{
+      display:flex;
+      gap:25px;
+    }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px #00ffcc55;
-}
+    .menu a{
+      color:white;
+      text-decoration:none;
+      position:relative;
+      transition:0.3s;
+    }
 
-.card h3{
-margin-bottom:10px;
-color:#00ffcc;
-}
+    .menu a::after{
+      content:"";
+      position:absolute;
+      width:0%;
+      height:2px;
+      left:0;
+      bottom:-6px;
+      background:#00b7ff;
+      transition:0.3s;
+    }
 
-footer{
-text-align:center;
-padding:40px;
-background:#0a0a0a;
-color:#777;
-}
+    .menu a:hover::after{
+      width:100%;
+    }
 
-@media(max-width:768px){
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      padding:0 20px;
+      position:relative;
+    }
 
-.hero h1{
-font-size:3rem;
-}
+    .hero h1{
+      font-size:8rem;
+      font-family:'Orbitron',sans-serif;
+      font-weight:900;
+      text-transform:uppercase;
+      background:linear-gradient(90deg,#00b7ff,#ff0055);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:glow 2s infinite alternate;
+    }
 
-.hero p{
-font-size:1rem;
-}
+    @keyframes glow{
+      from{
+        text-shadow:0 0 20px rgba(0,183,255,0.5);
+      }
+      to{
+        text-shadow:0 0 40px rgba(255,0,85,0.8);
+      }
+    }
 
-}
+    .hero p{
+      margin-top:20px;
+      max-width:700px;
+      color:#d5d5d5;
+      font-size:1.2rem;
+    }
 
-</style>
+    .buttons{
+      margin-top:40px;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .btn{
+      padding:15px 35px;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:bold;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:linear-gradient(90deg,#00b7ff,#0077ff);
+      color:white;
+      box-shadow:0 0 20px rgba(0,183,255,0.5);
+    }
+
+    .btn-secondary{
+      border:2px solid #ff0055;
+      color:white;
+      background:transparent;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px) scale(1.05);
+    }
+
+    section{
+      padding:120px 20px;
+      max-width:1300px;
+      margin:auto;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:3rem;
+      margin-bottom:60px;
+      font-family:'Orbitron',sans-serif;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:30px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+      backdrop-filter:blur(10px);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      width:200%;
+      height:200%;
+      background:linear-gradient(45deg,transparent,rgba(255,255,255,0.1),transparent);
+      transform:rotate(45deg);
+      top:-150%;
+      left:-150%;
+      transition:0.7s;
+    }
+
+    .card:hover::before{
+      top:100%;
+      left:100%;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#00b7ff;
+      box-shadow:0 0 30px rgba(0,183,255,0.3);
+    }
+
+    .card h3{
+      color:#00b7ff;
+      margin-bottom:15px;
+      font-size:1.5rem;
+    }
+
+    .stats{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:30px;
+    }
+
+    .stat{
+      width:220px;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat h2{
+      font-size:3rem;
+      color:#ff0055;
+    }
+
+    .join{
+      text-align:center;
+      padding:70px 20px;
+      border-radius:25px;
+      background:linear-gradient(135deg,rgba(0,183,255,0.1),rgba(255,0,85,0.1));
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    footer{
+      text-align:center;
+      padding:40px 20px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:#888;
+      margin-top:80px;
+    }
+
+    .particles{
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      overflow:hidden;
+      z-index:-1;
+    }
+
+    .particle{
+      position:absolute;
+      width:4px;
+      height:4px;
+      background:white;
+      border-radius:50%;
+      opacity:0.4;
+      animation:float 10s linear infinite;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(100vh) scale(0);
+      }
+      to{
+        transform:translateY(-10vh) scale(1);
+      }
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:4rem;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+    }
+
+  </style>
 </head>
 <body>
 
+<div class="grid"></div>
+
 <header>
-<div class="hero">
-<h1>NO NAMES</h1>
-<p>Elite CS2 Team</p>
-<a href="#team" class="btn">Poznaj Drużynę</a>
-</div>
+  <nav>
+
+    <div class="logo">NONAMES</div>
+
+    <div class="menu">
+      <a href="#about">O nas</a>
+      <a href="#team">Team</a>
+      <a href="#stats">Staty</a>
+      <a href="#join">Dołącz</a>
+    </div>
+
+  </nav>
 </header>
 
-<section id="team">
-<h2 class="section-title">Skład Drużyny</h2>
+<section class="hero">
 
-<div class="players">
+  <div class="particles" id="particles"></div>
 
-<div class="card">
-<h3>NO NAME #1</h3>
-<p>AWPer / Entry Fragger</p>
-</div>
+  <h1>NONAMES</h1>
 
-<div class="card">
-<h3>NO NAME #2</h3>
-<p>IGL / Strateg</p>
-</div>
+  <p>
+    Elitarna drużyna e-sportowa.
+    Dominujemy turnieje, rankingi i serwery.
+  </p>
 
-<div class="card">
-<h3>NO NAME #3</h3>
-<p>Support</p>
-</div>
+  <div class="buttons">
 
-<div class="card">
-<h3>NO NAME #4</h3>
-<p>Rifler</p>
-</div>
+    <a href="#team" class="btn btn-primary">
+      Poznaj Team
+    </a>
 
-</div>
+    <a href="#join" class="btn btn-secondary">
+      Rekrutacja
+    </a>
+
+  </div>
+
 </section>
 
-<section>
-<h2 class="section-title">O Nas</h2>
+<section id="about">
 
-<p style="font-size:1.2rem; line-height:2; color:#bbb;">
-No Names to nowoczesna drużyna Counter-Strike 2 tworzona przez pasjonatów esportu.
-Gramy agresywnie, profesjonalnie i stale rozwijamy swoje umiejętności.
-Naszym celem jest wejście na scenę semi-pro i budowa rozpoznawalnej marki.
-</p>
+  <h2 class="section-title">
+    Kim jesteśmy?
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Profesjonalizm</h3>
+      <p>
+        NONAMES to nowoczesna organizacja e-sportowa nastawiona na rozwój i dominację.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Turnieje</h3>
+      <p>
+        Regularnie gramy scrimy, ligi oraz turnieje online.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Społeczność</h3>
+      <p>
+        Budujemy mocną ekipę ludzi z pasją do gier i rywalizacji.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="team">
+
+  <h2 class="section-title">
+    Nasz Squad
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Leader</h3>
+      <p>Dodaj nick lidera.</p>
+    </div>
+
+    <div class="card">
+      <h3>Sniper</h3>
+      <p>Dodaj nick gracza.</p>
+    </div>
+
+    <div class="card">
+      <h3>Support</h3>
+      <p>Dodaj nick gracza.</p>
+    </div>
+
+    <div class="card">
+      <h3>Entry Fragger</h3>
+      <p>Dodaj nick gracza.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="stats">
+
+  <h2 class="section-title">
+    Statystyki
+  </h2>
+
+  <div class="stats">
+
+    <div class="stat">
+      <h2>87%</h2>
+      <p>Win Rate</p>
+    </div>
+
+    <div class="stat">
+      <h2>120+</h2>
+      <p>Meczy</p>
+    </div>
+
+    <div class="stat">
+      <h2>15</h2>
+      <p>Turniejów</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="join">
+
+  <div class="join">
+
+    <h2 class="section-title">
+      Dołącz do NONAMES
+    </h2>
+
+    <p style="margin-bottom:30px;color:#ccc;">
+      Rekrutacja otwarta dla aktywnych graczy.
+    </p>
+
+    <a href="#" class="btn btn-primary">
+      Discord
+    </a>
+
+  </div>
 
 </section>
 
 <footer>
-© 2026 No Names Esports
+  © 2026 NONAMES E-SPORT
 </footer>
+
+<script>
+
+  const particles = document.getElementById("particles");
+
+  for(let i = 0; i < 80; i++){
+
+    const particle = document.createElement("div");
+
+    particle.classList.add("particle");
+
+    particle.style.left = Math.random() * 100 + "vw";
+
+    particle.style.animationDuration =
+    (Math.random() * 10 + 5) + "s";
+
+    particle.style.opacity = Math.random();
+
+    particle.style.width =
+    particle.style.height =
+    (Math.random() * 5 + 2) + "px";
+
+    particles.appendChild(particle);
+
+  }
+
+</script>
 
 </body>
 </html>
